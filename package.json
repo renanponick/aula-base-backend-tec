@@ -16,7 +16,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "node index.js"
+    "dev": "node --watch index.js"
   },
   "dependencies": {
     "express": "^5.2.1"
