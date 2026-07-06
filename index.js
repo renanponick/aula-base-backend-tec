@@ -1,39 +1,78 @@
 import express from 'express'
-import bancoDeDados from './repository/index.js'
+import { campeao, monstro } from './repository/index.js'
 
 const app = express()
 
-app.get("/api/v1/pessoa/", (req, res) => {
-    const id = req.query.id
-    const nome = req.query.nome
-
-    if(!id || !nome) {
-        res.status(400).send({ message: "Parâmetros inválidos!" })
-        return
-    }
-
-    const pessoa = {
-        id,
-        nome
-    }
-
-    bancoDeDados.push(pessoa)
-
-    res.send({ message: "Pessoa adicionada com sucesso!" })
+app.get("/jogo/status", (req, res) => {
+    res.send({ 
+        campeaoVida: campeao.hp,
+        monstroVida: monstro.hp
+     })
 })
 
-
-app.get("/api/v1/pessoa/:id", (req, res) => {
-    const id = req.params.id
-
-    const pessoa = bancoDeDados.find(p => p.id === id)
-
-    if(!pessoa) {
-        res.status(404).send({ message: "Pessoa não encontrada!" })
-        return
+function verificarVencedor() {
+    if (monstro.hp <= 0) {
+        return "Campeão venceu!"
+    } else if (campeao.hp <= 0) {
+        return "Monstro venceu!"
     }
+    return null
+}
 
-    res.send({ message: "Pessoa encontrada com sucesso!", pessoa })
+function monstroTurno(defesa) {
+    // Sortear o que o monstro irá fazer: atacar, curar ou nada
+    const opcoes = ["atacar", "curar", "nada"];
+    const escolha = opcoes[Math.floor(Math.random() * opcoes.length)];
+
+    switch (escolha) {
+        case "atacar":
+            defesa = defesa || 0;
+            campeao.hp -= Math.max(0, monstro.danoBase - defesa);
+            return "O monstro atacou o campeão!";
+        case "curar":
+            monstro.hp = Math.min(monstro.hpBase, monstro.hp + monstro.curar);
+            return "O monstro curou-se!";
+        case "nada":
+            return "O monstro não fez nada!";
+    }
+}
+
+app.get("/jogo/ataque", (req, res) => {
+    monstro.hp -= campeao.ataque
+    const monstroJogou = monstroTurno()
+    const vencedor = verificarVencedor()
+
+    return res.send({ 
+        monstroJogou,
+        campeaoVida: campeao.hp,
+        monstroVida: monstro.hp,
+        message: vencedor
+    })
+})
+
+app.get("/jogo/defesa", (req, res) => {
+    const monstroJogou = monstroTurno(campeao.defesa)
+    const vencedor = verificarVencedor()
+
+    return res.send({ 
+        monstroJogou,
+        campeaoVida: campeao.hp,
+        monstroVida: monstro.hp,
+        message: vencedor
+    })
+})
+
+app.get("/jogo/curar", (req, res) => {
+    campeao.hp = Math.min(campeao.hpBase, campeao.hp + campeao.curar)
+    const monstroJogou = monstroTurno()
+    const vencedor = verificarVencedor()
+
+     return res.send({ 
+        monstroJogou,
+        campeaoVida: campeao.hp,
+        monstroVida: monstro.hp,
+        message: vencedor
+    })
 })
 
 app.listen(3000, () => {
