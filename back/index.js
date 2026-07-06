@@ -1,7 +1,11 @@
 import express from 'express'
 import { campeao, monstro } from './repository/index.js'
+import cors from 'cors'
 
 const app = express()
+
+app.use(express.json())
+app.use(cors())
 
 app.get("/jogo/status", (req, res) => {
     res.send({ 
@@ -21,7 +25,7 @@ function verificarVencedor() {
 
 function monstroTurno(defesa) {
     // Sortear o que o monstro irá fazer: atacar, curar ou nada
-    const opcoes = ["atacar", "curar", "nada"];
+    const opcoes = ["atacar", "curar", "nada", "nada"];
     const escolha = opcoes[Math.floor(Math.random() * opcoes.length)];
 
     switch (escolha) {
