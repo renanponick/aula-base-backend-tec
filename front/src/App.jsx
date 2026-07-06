@@ -7,12 +7,12 @@ import { atacar, curar, defender, status } from './api/onehero'
 
 function App() {
   const [campeaoVida, setCampeaoVida] = useState({
-    vidaBase: 10,
-    vidaAtual: 10
+    vidaBase: 500,
+    vidaAtual: 500
   })
   const [monstroVida, setMonstroVida] = useState({
-    vidaBase: 10,
-    vidaAtual: 10
+    vidaBase: 1000,
+    vidaAtual: 1000
   })
   const [mensagem, setMensagem] = useState('')
   const [jogoFinalizado, setJogoFinalizado] = useState(false)
@@ -93,11 +93,11 @@ function App() {
         <div className="champion">
           <img src={stickhero} alt="Stick Hero" />
           <div className="health-bar">
-            <div className="health-text">
-              {campeaoVida.vidaAtual} / {campeaoVida.vidaBase}
-            </div>
             <div className="health">
               <div className="dead-health" style={{ width: `${100 - (campeaoVida.vidaAtual / campeaoVida.vidaBase * 100)}%` }}></div>
+            </div>
+            <div className="health-text">
+              {campeaoVida.vidaAtual} / {campeaoVida.vidaBase}
             </div>
           </div>
         </div>
@@ -105,11 +105,11 @@ function App() {
         <div className="monster">
           <img src={monstro} alt="Monstro" />
           <div className="health-bar">
-            <div className="health-text">
-              {monstroVida.vidaAtual} / {monstroVida.vidaBase}
-            </div>
             <div className="health">
               <div className="dead-health" style={{ width: `${100 - (monstroVida.vidaAtual / monstroVida.vidaBase * 100)}%` }}></div>
+            </div>
+            <div className="health-text">
+              {monstroVida.vidaAtual} / {monstroVida.vidaBase}
             </div>
           </div>
         </div>
