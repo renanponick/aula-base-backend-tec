@@ -87,6 +87,8 @@ function App() {
 
   async function handleResetar() {
     await resetar()
+    setJogoFinalizado(false)
+    setMensagem("")
     const statusData = await status()
     setCampeaoVida({
       vidaBase: statusData.campeaoVida,
