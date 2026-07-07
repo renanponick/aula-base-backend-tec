@@ -25,7 +25,7 @@ function verificarVencedor() {
 
 function monstroTurno(defesa) {
     // Sortear o que o monstro irá fazer: atacar, curar ou nada
-    const opcoes = ["atacar", "curar", "nada", "nada"];
+    const opcoes = ["atacar", "curar", "nada"];
     const escolha = opcoes[Math.floor(Math.random() * opcoes.length)];
 
     switch (escolha) {
@@ -76,6 +76,15 @@ app.get("/jogo/curar", (req, res) => {
         campeaoVida: campeao.hp,
         monstroVida: monstro.hp,
         message: vencedor
+    })
+})
+
+app.get("/jogo/resetar", (req, res) => {
+    campeao.hp = campeao.hpBase
+    monstro.hp = campeao.hpBase
+
+    res.send({
+        message: "Resetado"
     })
 })
 

@@ -22,3 +22,9 @@ export async function status() {
     const data = await res.json()
     return data
 }
+
+export async function resetar() {
+    const res = await fetch("http://localhost:3000/jogo/resetar")
+    const data = await res.json()
+    return data
+}

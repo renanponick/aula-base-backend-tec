@@ -3,7 +3,7 @@ import './App.css'
 
 import stickhero from './assets/stickhero.webp'
 import monstro from './assets/monstro.webp'
-import { atacar, curar, defender, status } from './api/onehero'
+import { atacar, curar, defender, resetar, status } from './api/onehero'
 
 function App() {
   const [campeaoVida, setCampeaoVida] = useState({
@@ -85,6 +85,19 @@ function App() {
     data.monstroJogou && setMensagem(data.monstroJogou)
   }
 
+  async function handleResetar() {
+    await resetar()
+    const statusData = await status()
+    setCampeaoVida({
+      vidaBase: statusData.campeaoVida,
+      vidaAtual: statusData.campeaoVida
+    })
+    setMonstroVida({
+      vidaBase: statusData.monstroVida,
+      vidaAtual: statusData.monstroVida
+    })
+  }
+
   return (
     <>
       <h1>Jogo de RPG - StickHero</h1>
@@ -124,6 +137,10 @@ function App() {
       ? (
         <div className="game-over">
           <h2>Jogo Finalizado</h2>
+
+          <button onClick={handleResetar}>
+            Resetar
+          </button>
         </div>
       )
       : (
