@@ -81,7 +81,7 @@ app.get("/jogo/curar", (req, res) => {
 
 app.get("/jogo/resetar", (req, res) => {
     campeao.hp = campeao.hpBase
-    monstro.hp = campeao.hpBase
+    monstro.hp = monstro.hpBase
 
     res.send({
         message: "Resetado"
