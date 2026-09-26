@@ -1,0 +1,71 @@
+.titulo-lista {
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+}
+
+.lista-personagens {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.char-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.char-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.char-card img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.char-card:hover img {
+  transform: scale(1.05);
+}
+
+.char-card h2 {
+  font-size: 1rem;
+  padding: 12px 12px 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.char-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 12px;
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+.char-episodes {
+  margin-top: auto;
+  padding: 8px 12px 12px;
+  font-size: 0.8rem;
+  color: #64748b;
+  border-top: 1px solid #f1f5f9;
+}
+
+.feedback {
+  text-align: center;
+  padding: 32px;
+  font-size: 1.1rem;
+}
+
+.feedback.erro {
+  color: #dc2626;
+}

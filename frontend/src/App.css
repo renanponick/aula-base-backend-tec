@@ -1,0 +1,8 @@
+.app-shell { width: min(1120px, 100%); min-height: 100vh; margin: 0 auto; display: flex; flex-direction: column; background: var(--background); }
+.app-content { flex: 1; }
+.topbar { min-height: 68px; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; background: var(--surface); border-bottom: 1px solid var(--border); }
+.brand { color: var(--heading); font-weight: 800; }
+.topbar nav { display: flex; align-items: center; gap: 20px; color: var(--muted); font-size: .92rem; }
+.link-button { border: 0; background: transparent; color: inherit; cursor: pointer; padding: 0; }
+.footer { padding: 20px 28px; color: var(--muted); border-top: 1px solid var(--border); font-size: .82rem; }
+

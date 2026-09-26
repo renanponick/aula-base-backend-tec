@@ -1,0 +1,13 @@
+.auth-card { width: min(420px, 100%); margin: 72px auto; padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); }
+.auth-card h1 { margin: 6px 0 8px; color: var(--heading); }
+.eyebrow { color: var(--accent); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.muted { color: var(--muted); margin-bottom: 24px; }
+.auth-card form { display: grid; gap: 16px; }
+.auth-card label, .form-card label { display: grid; gap: 6px; color: var(--heading); font-weight: 600; font-size: .9rem; text-align: left; }
+.auth-card input, .form-card input { width: 100%; box-sizing: border-box; padding: 11px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--background); color: var(--heading); font: inherit; }
+.primary, .secondary { width: 100%; padding: 11px 16px; border-radius: 8px; font: inherit; font-weight: 700; cursor: pointer; }
+.primary { border: 0; color: white; background: var(--accent); }
+.primary:disabled { opacity: .65; cursor: wait; }
+.secondary { margin-top: 12px; border: 1px solid var(--border); color: var(--heading); background: transparent; }
+.error { color: var(--danger); margin: 0; font-size: .9rem; }
+
