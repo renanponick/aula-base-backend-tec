@@ -2,48 +2,12 @@ import { useState } from 'react'
 import './styles.css'
 
 function About() {
-    const [ num1, setNum1 ] = useState()
-    const [ num2, setNum2 ] = useState()
-    const [ resultado, setResultado ] = useState("AQUI VEM O RESULTADO")
+  const [primeiro, setPrimeiro] = useState('')
+  const [segundo, setSegundo] = useState('')
+  const [resultado, setResultado] = useState('')
+  function calcular(operacao) { const a = Number(primeiro); const b = Number(segundo); const valores = { somar: a + b, subtrair: a - b, multiplicar: a * b, dividir: b === 0 ? 'Não é possível dividir por zero.' : a / b }; setResultado(valores[operacao]) }
 
-    function somar() {
-        setResultado(Number(num1) + Number(num2))
-    }
-    function sub() {
-        setResultado(Number(num1) - Number(num2))
-    }
-    function mult() {
-        setResultado(Number(num1) * Number(num2))
-    }
-    function div() {
-        setResultado(Number(num1) / Number(num2))
-    }
-
-    return (
-        <>
-            <label>Digite um número</label>
-            <input
-                type="text"
-                value={num1}
-                onChange={(e) => setNum1(e.target.value)}
-            />
-            
-            <label>Digite outro número</label>
-            <input
-                type="text" 
-                value={num2}
-                onChange={(e) => setNum2(e.target.value)}
-            />
-
-            <button onClick={somar} >Somar</button>
-            <button onClick={sub}>Subtrair</button>
-            <button onClick={mult}>Multiplicar</button>
-            <button onClick={div}>Dividir</button>
-
-            {/* preciso usar a chave */}
-            <p>{ resultado }</p>
-        </>
-    )
+  return <section className="page"><div className="page-title"><p className="eyebrow">Exemplo de aula</p><h1>Calculadora React</h1><p>Uma tela pequena para observar estados, eventos e funções.</p></div><div className="card calculator"><div className="calculator-fields"><label>Primeiro número<input type="number" value={primeiro} onChange={(event) => setPrimeiro(event.target.value)} /></label><label>Segundo número<input type="number" value={segundo} onChange={(event) => setSegundo(event.target.value)} /></label></div><div className="actions"><button className="button" onClick={() => calcular('somar')}>Somar</button><button className="button" onClick={() => calcular('subtrair')}>Subtrair</button><button className="button" onClick={() => calcular('multiplicar')}>Multiplicar</button><button className="button" onClick={() => calcular('dividir')}>Dividir</button></div><p className="result">Resultado: <strong>{resultado || 'ainda vazio'}</strong></p></div></section>
 }
 
 export default About

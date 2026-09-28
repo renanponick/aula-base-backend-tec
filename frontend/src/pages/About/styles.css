@@ -1,0 +1,6 @@
+.calculator { max-width: 640px; }
+.calculator-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.calculator label { display: grid; gap: 6px; font-weight: bold; font-size: .9rem; }
+.calculator input { padding: 10px; border: 1px solid #b9c2cf; border-radius: 5px; }
+.result { margin: 24px 0 0; padding-top: 16px; border-top: 1px solid #d9dee7; }
+@media (max-width: 560px) { .calculator-fields { grid-template-columns: 1fr; } }

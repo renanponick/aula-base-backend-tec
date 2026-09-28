@@ -1,0 +1,6 @@
+.cars-layout { display: grid; grid-template-columns: 280px 1fr; gap: 16px; }
+.car-list { display: grid; gap: 8px; }
+.car-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid #d9dee7; }
+.car-item strong, .car-item span { display: block; }
+.car-item span { margin-top: 4px; color: #53657d; font-size: .9rem; }
+@media (max-width: 680px) { .cars-layout { grid-template-columns: 1fr; } .car-item { align-items: flex-start; flex-direction: column; } }
