@@ -3,7 +3,7 @@ export const campeaoInicial = {
     hp: 300,
     ataque: 18,
     curar: 80,
-    defesa: 10,
+    defesa: 10
 }
 
 export const monstroInicial = {
@@ -11,5 +11,5 @@ export const monstroInicial = {
     hp: 200,
     danoBase: 25,
     curar: 50,
-    defesa: 5,
+    defesa: 5
 }
